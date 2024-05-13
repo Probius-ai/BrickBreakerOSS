@@ -51,13 +51,14 @@ class BrickBreakerGame  extends FlameGame{
 
   void populateBricks(int rows, int columns){
     Vector2 margin = Vector2(gridSize.x *0.2, gridSize.y *0.1);
-    double firstPosX = 0;
+    double totalWidth  = columns *(gridSize.x + margin.x) - margin.x;
+    double firstPosX = (size.x - totalWidth)/2;  // points the center for brick
 
     // Create Bricks
     for(int i = 0; i<rows; i++){
       for(int j =0; j<columns;j++){
         bricks.add(Brick(gridSize: gridSize)
-        ..position = Vector2(firstPosX + (gridSize.x+margin.x)*j, (gridSize.y + margin.y)*i));
+        ..position = Vector2(firstPosX + (gridSize.x+margin.x)*j, margin.y + (gridSize.y + margin.y)*i));
       }
     }
   }
