@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
@@ -9,6 +10,11 @@ class Bar extends PositionComponent with DragCallbacks{
   Bar({required this.gridSize}) : super(size: Vector2(gridSize.x*2, gridSize.y /2));
 
   Paint paint = Paint()..color =  Color.fromARGB(255, 214, 230, 245);
+
+  @override
+  void onLoad() {
+    add(RectangleHitbox());
+  }
 
   @override
   void render(Canvas canvas) {
