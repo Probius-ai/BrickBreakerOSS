@@ -1,12 +1,18 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:brickbreaker_flutter/brick.dart';
+import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 
 class BrickBreakerGame  extends FlameGame{
   static double grid = 0.1;
   static late Vector2 gridSize;
+
+  final  World world = World();
+  late   CameraComponent cameraComponent = CameraComponent(world: world)
+  ..viewfinder.anchor = Anchor.topLeft;
 
   @override
   void onLoad() async{
@@ -19,8 +25,8 @@ class BrickBreakerGame  extends FlameGame{
 
   @override
   void onMount() {
-    // TODO: implement onMount
-    
+    world.add(Brick(gridSize: gridSize)..x =  size.x/2 ..y=size.y/2);
+    addAll([cameraComponent, world]);
   }
 
   @override
