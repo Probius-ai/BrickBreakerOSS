@@ -1,3 +1,3 @@
 # BrickBreakerOSS
-# respository for personal codes and changes
-# Plan to make BrickBreaker based in Dart and Flame Engine
+## repository for personal codes and changes
+## Brick Breaker that is based on Flutter and Flame engine
