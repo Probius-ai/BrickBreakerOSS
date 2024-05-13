@@ -27,37 +27,37 @@ class BrickBreakerGame  extends FlameGame{
 
   @override
   void onMount() {
+    //set how much bricks you want
+    populateBricks(4, 8);
+    //display brick
     world.addAll(bricks);
     addAll([cameraComponent, world]);
   }
 
   @override
   void update(double dt) {
-    // TODO: implement update
     super.update(dt);
   }
 
   @override
   void render(Canvas canvas) {
-    // TODO: implement render
     super.render(canvas);
   }
 
   @override
   Color backgroundColor() {
-    // TODO: implement backgroundColor
     return const Color.fromARGB(255, 163, 204, 163);
   }
 
   void populateBricks(int rows, int columns){
+    Vector2 margin = Vector2(gridSize.x *0.2, gridSize.y *0.1);
     double firstPosX = 0;
 
-
-    // Create Bricks in Game
+    // Create Bricks
     for(int i = 0; i<rows; i++){
       for(int j =0; j<columns;j++){
         bricks.add(Brick(gridSize: gridSize)
-        ..position = Vector2(firstPosX + (gridSize.x*j), gridSize.y * i));
+        ..position = Vector2(firstPosX + (gridSize.x+margin.x)*j, (gridSize.y + margin.y)*i));
       }
     }
   }
