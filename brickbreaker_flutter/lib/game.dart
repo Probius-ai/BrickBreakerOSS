@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:brickbreaker_flutter/ball.dart';
 import 'package:brickbreaker_flutter/bar.dart';
 import 'package:brickbreaker_flutter/brick.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 
-class BrickBreakerGame  extends FlameGame{
+class BrickBreakerGame  extends FlameGame with HasCollisionDetection{
   static double grid = 0.1;
   static late Vector2 gridSize;
 
@@ -18,6 +19,7 @@ class BrickBreakerGame  extends FlameGame{
   List<Brick> bricks = [];
 
   late final Bar bar;
+  late final Ball ball;
 
   @override
   void onLoad() async{
@@ -33,7 +35,8 @@ class BrickBreakerGame  extends FlameGame{
     //set how much bricks you want
     populateBricks(4, 8);
     bar = Bar(gridSize: gridSize)..position = Vector2(size.x/2 -  gridSize.x, size.y - gridSize.y);
-    world.add(bar);
+    ball = Ball(gridSize: gridSize)..position = size / 2;
+    world.addAll([bar,ball]);
     //display brick
     world.addAll(bricks);
     addAll([cameraComponent, world]);
