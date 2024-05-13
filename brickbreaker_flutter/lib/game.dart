@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:brickbreaker_flutter/bar.dart';
 import 'package:brickbreaker_flutter/brick.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
@@ -16,6 +17,8 @@ class BrickBreakerGame  extends FlameGame{
 
   List<Brick> bricks = [];
 
+  late final Bar bar;
+
   @override
   void onLoad() async{
     // TODO: implement onLoad
@@ -29,6 +32,8 @@ class BrickBreakerGame  extends FlameGame{
   void onMount() {
     //set how much bricks you want
     populateBricks(4, 8);
+    bar = Bar(gridSize: gridSize)..position = Vector2(size.x/2 -  gridSize.x, size.y - gridSize.y);
+    world.add(bar);
     //display brick
     world.addAll(bricks);
     addAll([cameraComponent, world]);
