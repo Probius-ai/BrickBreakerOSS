@@ -7,7 +7,7 @@ class Brick  extends PositionComponent{
 
   Brick({required this.gridSize}) : super(size: gridSize);
   //Configure Brick Color
-  Paint paint = Paint()..color =  Color.fromARGB(255, 88, 68, 100);
+  Paint paint = Paint()..color =  Color.fromARGB(255, 255, 88, 68);
 
   @override
   void render(Canvas canvas) {
