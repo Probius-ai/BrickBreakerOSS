@@ -7,7 +7,8 @@ import 'package:brickbreaker_flutter/game.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-class Ball extends PositionComponent with CollisionCallbacks, HasGameRef<BrickBreakerGame>{
+class Ball extends PositionComponent 
+    with CollisionCallbacks, HasGameRef<BrickBreakerGame>{
   final  Vector2 gridSize;
   late final double radius;
   late final Vector2 velocity;
