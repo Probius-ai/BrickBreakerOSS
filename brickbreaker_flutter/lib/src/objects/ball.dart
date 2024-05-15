@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:brickbreaker_flutter/bar.dart';
-import 'package:brickbreaker_flutter/brick.dart';
+import 'package:brickbreaker_flutter/src/objects/bar.dart';
+import 'package:brickbreaker_flutter/src/objects/brick.dart';
 import 'package:brickbreaker_flutter/game.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
