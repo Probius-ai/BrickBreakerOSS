@@ -8,13 +8,47 @@ import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 
-class BrickBreakerGame  extends FlameGame with HasCollisionDetection{
+enum GameState {lobby, playing, gameWin, gameOver}
+
+class BrickBreakerGame  extends FlameGame 
+    with HasCollisionDetection{
+      
+  BrickBreakerGame()
+      :super(
+        World world = World(),
+        camera: CameraComponent(world: world)..viewfinder.anchor = Anchor.topLeft,
+      
+      );
+
   static double grid = 0.1;
   static late Vector2 gridSize;
+
+  double get width => size.x;
+  double get height => size.y;
 
   final  World world = World();
   late   CameraComponent cameraComponent = CameraComponent(world: world)
   ..viewfinder.anchor = Anchor.topLeft;
+
+
+// things that work in each states
+late GameState _gameState;
+GameState get gameState => _gameState;
+set gameState(GameState gameState) {
+  _gameState = gameState;
+  switch (gameState) {
+    case GameState.lobby:
+    case GameState.gameWin:
+    case GameState.gameOver:
+      overlays.add(gameState.name);
+    case GameState.playing:
+      overlays.remove(GameState.lobby.name);
+      overlays.remove(GameState.gameWin.name);
+      overlays.remove(GameState.gameOver.name);
+  }
+}
+
+
 
   List<Brick> bricks = [];
 
